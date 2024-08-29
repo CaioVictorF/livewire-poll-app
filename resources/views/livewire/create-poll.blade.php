@@ -1,6 +1,6 @@
 <div>
     <form wire:submit.prevent="createPoll">
-        <label>Poll Title</label>
+        <label>Título da enquete</label>
 
         <input type="text" wire:model="title" /> {{---O wiremodel vincula o valor da propriedade publica de models com o input do fomulário---}}
         
@@ -15,7 +15,7 @@
         <div>
             @foreach($options as $index => $options) {{---O foreach tem como parametro de iteração $options que será atribuído ao index---}}
                 <div class="mb-4">
-                    <label>Option {{$index + 1}}</label>{{---Exibirá Option com o indice 0 que será automaticamente somado com 1 ---}}
+                    <label>Opção {{$index + 1}}</label>{{---Exibirá Option com o indice 0 que será automaticamente somado com 1 ---}}
                     <div class="flex gap-2">
                         <input type="text" wire:model="options.{{ $index }}"/>{{---Exibe uma caixa de entrada. Wiremodels chama a propriedade options e sem seguida, usamos ponto para especificar q o indice é gerado na matriz---}}
                         <button class="btn" wire:click.prevent="removeOption({{ $index }})">Remover</button>

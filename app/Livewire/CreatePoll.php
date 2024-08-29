@@ -17,7 +17,8 @@ class CreatePoll extends Component
     ];
 
     protected $messages = [
-        'options.*' => "O campo opção deve ser preenchido!"
+        'options.*' => "O campo opção é obritatório!",
+        'title' => "O campo título da enquete é obritatório!"
     ];
 
     public function render()
