@@ -30,9 +30,20 @@
 </head>
 
 <body class="container mx-auto mt-10 mb-10 max-w-lg">
-  @livewireScripts {{--diretiva de scripts para renderizar ao vivo, sua função é adicionar algum js de transmissão ao vivo--}}
+  
 
-  @livewire('create-poll') {{--renderiza o conteudo do create poll--}}
+  <div>
+    <h2 class="mb-4 mt-4 text-2xl">Criar enquete</h2>
+     <livewire:create-poll />
+  </div>
+
+  <div>
+    <h2 class="mb-4 mt-4 text-2xl">Enquetes disponíveis</h2>
+    <livewire:polls />
+  </div>
+
+
+  @livewireScripts {{--diretiva de scripts para renderizar ao vivo, sua função é adicionar algum js de transmissão ao vivo--}}
 </body>
 
 </html>

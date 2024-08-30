@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Belongsto;
-use Illuminare\Database\Eloquente\Relations\Hasmany;
+use Illuminate\Database\Eloquent\Relations\Hasmany;
 
 class Option extends Model
 {
@@ -20,6 +20,6 @@ class Option extends Model
 
     public function votes(): HasMany #modelo pai
     {
-        return  $this->hasMany(Vote::class);
+        return $this->hasMany(Vote::class);
     }
 }

@@ -8,9 +8,9 @@ use App\Models\Poll;
 class CreatePoll extends Component
 {
     public $title;
-    public $options= ['First'];
+    public $options = ['First'];
 
-    protected $rules = [
+    protected $rules = [ #campo protegido para as regras de validação
         'title' => 'required|min:3|max:255',
         'options' => 'required|array|min:1|max:10',
         'options.*' => 'required|min:1|max:255'
@@ -21,7 +21,7 @@ class CreatePoll extends Component
         'title' => "O campo título da enquete é obritatório!"
     ];
 
-    public function render()
+    public function render() 
     {
         return view('livewire.create-poll');
     }
@@ -38,6 +38,11 @@ class CreatePoll extends Component
        // $this->options = array_values($this->options);
     }
 
+    public function updated($propertyName) #quando qualquer propriedade publica for atualizada, esse método é chamado
+    {
+        $this->validateOnly($propertyName); #o metodo validateonly valida apenas um campo especifico usando as mensagens as menssagens definidas nas regras
+    }
+
     public function createPoll() #armazena dados no banco
     {
         $this->validate();
@@ -51,6 +56,7 @@ class CreatePoll extends Component
         );
 
         $this->reset(['title', 'options']); #reset é uma função que irá resetar os campos de titulo e opção
+        $this->dispatch('pollCreated');
     }
 
     /*public function mount()

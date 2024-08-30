@@ -2,7 +2,7 @@
     <form wire:submit.prevent="createPoll">
         <label>Título da enquete</label>
 
-        <input type="text" wire:model="title" /> {{---O wiremodel vincula o valor da propriedade publica de models com o input do fomulário---}}
+        <input type="text" wire:model.live="title" /> {{---O wiremodel vincula o valor da propriedade publica de models com o input do fomulário---}}
         
         @error('title')
             <div class="text-red-500">{{ $message }}</div>
@@ -17,10 +17,10 @@
                 <div class="mb-4">
                     <label>Opção {{$index + 1}}</label>{{---Exibirá Option com o indice 0 que será automaticamente somado com 1 ---}}
                     <div class="flex gap-2">
-                        <input type="text" wire:model="options.{{ $index }}"/>{{---Exibe uma caixa de entrada. Wiremodels chama a propriedade options e sem seguida, usamos ponto para especificar q o indice é gerado na matriz---}}
+                        <input type="text" wire:model.live="options.{{ $index }}"/>{{---Exibe uma caixa de entrada. Wiremodels chama a propriedade options e sem seguida, usamos ponto para especificar q o indice é gerado na matriz---}}
                         <button class="btn" wire:click.prevent="removeOption({{ $index }})">Remover</button>
                     </div>
-                    @error("options.{$index}")
+                    @error("options.{$index}") {{---É passado o indice nos colchetes porque tem a mesma váriavel iterando em todas as opções---}}
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror       
                 </div>
